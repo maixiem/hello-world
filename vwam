@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}{block:Portuguese}pt{/block:Portuguese}">
+    <head>
+        <title>{Title}{block:PermalinkPage}{block:PostSummary}&mdash; {PlaintextPostSummary}{/block:PostSummary}{block:PermalinkPage}{block:SearchPage}&mdash; {lang:Search results for SearchQuery} ({SearchResultCount}) {/block:SearchPage}{block:TagPage} &mdash; Posts tagged {Tag}{/block:TagPage}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+            {/block:Description}
+            <meta name="color:Background" content="#ffffff"/>
+            <meta name="color:PostBg" content="#ffffff"/>
+            <meta name="color:Links" content="#00bfff">
+            <meta name="color:LinksHover" content="#ffffff">
+            <meta name="color:Subtitles" content="#504c4a">
+            <meta name="color:Borders" content="#ffffff">
+            <meta name="text:ep title 1" content="/"/>
+            <meta name="text:ep title 2" content="/"/>
+            <meta name="text:ep title 3" content="/"/>
+            <meta name="text:ep title 4" content="/"/>
+            <meta name="text:ep title 5" content="/"/>
+            <meta name="text:ep url 1" content="/"/>
+            <meta name="text:ep url 2" content="/"/>
+            <meta name="text:ep url 3" content="/"/>
+            <meta name="text:ep url 4" content="/"/>
+            <meta name="text:ep url 5" content="/"/>
+            <meta name="text:bigLink1" content="Link 1"/>
+            <meta name="text:bigLinkURL1" content="/">
+            <meta name="text:bigLink2" content="Ask Us"/>
+            <meta name="text:bigLinkURL2" content="/">
+            <meta name="text:bigLink3" content="Submit"/>
+            <meta name="text:bigLinkURL3" content="/">
+        <style type="text/css">
+        /*stuff to add/fix
+        1. permalink format
+        2. text post format*/
+        .tmblr-iframe.tmblr-iframe--desktop-logged-in-controls.iframe-controls--desktop {
+            z-index: 999999999!important;
+        }
+            body {
+                background-color: white;
+                font: 11.5px Helvetica, FontAwesome;
+                overflow-x: hidden;
+            }
+            .link {
+                width: 100%;
+                padding: 20px 0px 20px 20px;
+                font: bold 15px Helvetica, FontAwesome;
+                margin-left: -10px;
+                color: {color:Links};
+                background-color: #ffffff;
+                -webkit-transition: 0.4s ease-in-out;
+                transition: 0.4s ease-in-out;
+            }
+            .link:hover {
+                background-color: {color:Links};
+                color: #ffffff;
+            }
+            .link a {
+                font: bold 15px Helvetica, FontAwesome;
+                text-decoration: none;
+            }
+            
+            .chat li {
+                margin-left: -40px;
+                margin-right: 10px;
+            }
+            
+            .source {
+                margin: 10px 10%;
+                text-align: right;
+                font-style: italic;
+            }
+            
+            .odd {
+                background-color: #ededed;
+                padding: 5px;
+            }
+            .even {
+                padding: 5px;
+            }
+            .user_1 {
+                color: red;
+            }
+            .user_2 {
+                color: blue;
+            }
+            .user_3 {
+                color: green;
+            }
+            
+            blockquote {
+                border-left: 2px solid {color:Background};
+            }
+            a:link, a:visited {
+                text-decoration: none;
+                color: {color:Links};
+            }
+            a:hover {
+                color: {color:LinksHover};
+            }
+            
+            #contain {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: auto;
+                margin-top: 110px;
+                width: 570px;
+                font:12px;
+                background-color: {color:Background};
+                z-index: -999;
+            }
+            
+            /*HEADER*/
+            #header {
+                margin: 0px;
+                top: 0px;
+                left:0px;
+                position: absolute;
+                padding: 0px;
+                width: 100%;
+                background-color: #ffffff;
+                z-index: 1000;
+            }
+            
+            #header a{
+                color: #000000;
+                border-bottom: 2px solid {color:Links};
+            }
+            
+            #header a:hover{
+            }
+            
+            #header h1{
+                font: bold 31px/25px Helvetica, FontAwesome;
+                margin-top: -27px;
+            }
+            
+            .subhead {
+                width: 530px;
+                position: relative;
+                margin: 22px auto auto auto;
+                padding: 20px 20px 12px 20px;
+                background-color: {color:Background};
+            }
+            
+            .social {
+                width: 100%;
+                font: 25px FontAwesome;
+                display: block;
+                text-align: right;
+                letter-spacing: 2px;
+            }
+            .social a {
+                border-bottom: none!important;
+            }
+            .social a:hover{
+                padding-bottom: 5px;
+                border-bottom: 2px solid {color:Links}!important;
+            }
+            /*POSTS*/
+            .postscontain {
+                height: 100%;
+                margin-left: 10px;
+                width: 520px;
+            }
+            .posts {
+                background-color: {color:PostBg};
+                width: 500px;
+                padding: 10px;
+                margin: 16px 15px 0px 15px;
+                border: 1px solid {color:Borders};
+                border-bottom: none;
+                border-radius: 8px 8px 0px 0px;
+            }
+            
+            .posts p {
+                margin-left: 20px;
+            }
+            .posts a {
+                text-decoration: none;
+                color: #000000;
+                font-weight: bold;
+                border-bottom: 2px solid {color:Links};
+            }
+
+            .posts h3 { /*post titles*/
+                font: bold 24px/18px Helvetica;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                
+            }
+            .posts h2 { /*big text in body*/
+                margin-left: 20px;
+            }
+            .posts ul { /*bullet points*/
+                list-style-type:disc;
+                margin-left: 20px;
+            }
+            
+            .posts ol { /*numbered lists*/
+                list-style-type: decimal;
+                margin: 20px;
+            }
+            #wrap {
+                position:relative;
+                overflow:auto;
+            }
+            #footer{
+                text-align:center;
+            }
+            
+            /*Permalink*/
+            .permalink {
+                list-style-type: none;
+                padding: 5px 10px 10px 10px;
+                width: 500px;
+                height: auto;
+                margin: 0px 15px 15px 15px;
+                background-color: #ffffff;
+                border: 1px solid {color:Borders};
+                border-top: none;
+                border-radius: 0px 0px 8px 8px;
+            }
+            
+            .permalink a{
+                font-weight: bold;
+                opacity: .7;
+                text-decoration: none;
+                padding-right: 3px;
+            }
+            
+            .permalink a:hover {
+                color: {color:LinksHover};
+            }
+            
+            .permacontainer {
+                margin-top: -12px;
+                float: right;
+            }
+
+            .tagcontainer {
+                {block:IndexPage}
+                width: 270px;
+                white-space: nowrap;
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                {/block:IndexPage}
+                {block:PermalinkPage}
+                width: auto;
+                {/block:PermalinkPage}
+            }
+            .notes ol { 
+                list-style-type: none;
+                margin: 20px;
+            }
+            
+            /*SIDEBAR*/
+            .update {
+                font: bold 15px/15px Helvetica;
+                color: {color:Subtitles};
+                text-transform: uppercase;
+            }
+            
+            .sidebarcontain {
+                width: 160px;
+                margin: -53px 15px 15px -180px;
+                height: 100%;
+                float: left;
+                position:fixed;
+                z-index: 99;
+            }
+            
+            .sidebar {
+                background-color: {color:PostBg};
+                border: 1px solid {color:Borders};
+                border-radius: 8px;
+                padding: 5px 8px 8px 8px;
+                margin:0px 0px 10px 0px;
+                width: 150px;
+                height: auto;
+                position:sticky;
+                top: 200px;
+            }
+            
+            .sidebar p {
+                padding: 0px 5px;
+            }
+        
+            .sidebar a:link, a:visited {
+                white-space: nowrap;
+                display:block;
+                overflow: hidden;
+                text-decoration: none;
+                text-overflow: ellipsis;
+                max-width: 130px;
+                color: {color:Links};
+                padding: 5px 5px 5px 12px;
+                transition: padding 2s;
+                
+            }
+            .sidebar a:hover{
+                padding: 5px 5px 5px 30px;
+                transition: padding 1s;
+                transition-delay: 0.1s;
+            }
+            
+            .sidebar li {
+                list-style-type: none;
+            }
+            /*soundcloud*/
+            .soundcloud_audio_player {
+                height:70px;
+                background-image:none!important;
+            }
+            .sc-artwork {
+            background-image:none!important;
+            }
+            /*big nav links*/
+           .large {
+                text-decoration: none;
+            }
+
+            .navlink{
+                text-transform: uppercase;
+                white-space: nowrap;
+                display:block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                background-color: #ffffff;
+                margin-bottom: 10px;
+                padding: 10px 35px 10px 2px;
+                width: 130px;
+                text-align: right;
+                position: sticky;
+                font: bold 12px Helvetica;
+                letter-spacing: 1px;
+                border: 1px solid {color:Borders};
+                border-radius: 8px;
+                transition: 1s;
+            }
+            
+            .navlink:hover{
+                background: {color:Links};
+                border: 1px solid {color:Links};
+                color: white;
+                padding-right: 15px;
+                width: 150px;
+                transition: 1s;
+            }
+            /*SEARCH*/
+            .search-field {
+                margin: 0px 10px 0px 10px;
+                padding-top:5px;
+                padding-bottom: 5px;
+                box-sizing: border-box;
+                width:auto;
+                size: 12px;
+            }
+            
+            .search {
+                padding-top:2px;
+                position: absolute;
+                top: 15px;
+                right: 88px;
+            }
+            
+            #search {
+                display: inline;
+                top: -5px;
+            }
+            .nothing {
+                text-align: center;
+                margin-top: 200px;
+                height: 600px;
+            }
+            
+            input[type=text] {
+                font: 20px Helvetica, FontAwesome;
+                padding-left: 2px;
+                width: 26px;
+                color: black;
+                background-color: {color:Background};
+                border: none;
+                -webkit-transition: 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+            }
+            
+            input[type=text]:focus {
+                border-bottom: 2px solid {color:Links};
+                outline: none;
+                width: 200px;
+                cursor: text;
+            }
+            input[type=text]:hover{
+                border-bottom: 2px solid {color:Links};
+                cursor: pointer;
+            }
+            input[type=text]::-webkit-input-placeholder {
+                color:black;
+            }
+        </style>
+        <script type="text/javascript" src="scripts/soundcloud.player.api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <script type="text/javascript">
+        var wrap = $("#wrap");
+        wrap.on("scroll", function(e) {
+            if (this.scrollTop > 147) {
+                wrap.addClass("place");
+            } else {
+                wrap.removeClass("place");
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="subhead">
+            <span class="search">
+                    <form action="/search" method="get" id="search">
+                            <input type="text" class="search-field fa fa-search" name="q" id="q" placeholder="&#xf002;" value="{SearchQuery}" autocomplete="off" alt="search this blog">
+                    </form>
+                   </span>
+            <span class="social"><a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-soundcloud"></i></a>
+            </span>
+            <h1><a href="/">{Title}</a></h1>
+            <p>the feminist fan podcast for dreamworks voltron legendary defender</p>
+        </div>
+    </div>
+    <div id="contain">
+        <div class="wrap" id="wrap">
+            <div class="sidebarcontain">
+                <h1 style="margin-bottom: 0px; padding-bottom: 0px;"><a href="/">{Title}</a></h1>
+                <div class="sidebar">
+                    <p>{Description}</p>
+                </div>
+                <a class="large" href="{text:bigLinkUrl1}">
+                    <div class="navlink">{text:bigLink1} <i class="fa fa-caret-right" style="margin-top:2px;"></i>
+                    </div>
+                </a>
+                <a class="large" href="{text:bigLinkUrl2}">
+                    <div class="navlink">{text:bigLink2} <i class="fa fa-caret-right" style="margin-top:2px;"></i>
+                    </div>
+                </a>
+                <a class="large" href="{text:bigLinkUrl3}">
+                    <div class="navlink">{text:bigLink3} <i class="fa fa-caret-right" style="margin-top:2px;"></i>
+                    </div>
+                </a>
+                <div class="sidebar">
+                    <p><span class="update">
+                    New Episodes
+                    </span>
+                        <li><a href="{text:ep url 1}">{text:ep title 1}</a>
+                        </li>
+                        <li><a href="{text:ep url 2}">{text:ep title 2}</a>
+                        </li>
+                        <li><a href="{text:ep url 3}">{text:ep title 3}</a>
+                        </li>
+                        <li><a href="{text:ep url 4}">{text:ep title 4}</a>
+                        </li>
+                        <li><a href="{text:ep url 5}">{text:ep title 5}</a>
+                        </li>
+                        <li><b><a href="/tagged/episodes">View all Episodes <i class="fa fa-caret-right" style="margin-top:2px;"></i></a></b>
+                            <li>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="postscontain">
+            {block:SearchPage} {block:NoSearchResults}
+            <div class="nothing">
+                {lang:Sorry no search results found}.
+            </div>
+            {/block:NoSearchResults} {/block:SearchPage} {block:Posts} {block:Text}
+            <div class="posts">
+                {block:Title}
+                <h3><a href="{Permalink}">{Title}</a></h3> {/block:Title}                 <p>{Body}</p>
+            </div>
+            {/block:Text} {block:Photo}
+            <div class="posts">
+                <img src="{PhotoURL-500}" alt="{PhotoAlt}" /> {block:Caption}
+                <div class="caption">{Caption}</div>
+                {/block:Caption}
+            </div>
+            {/block:Photo} {block:Panorama}
+            <div class="posts">
+                {LinkOpenTag}
+                <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" /> {LinkCloseTag}{block:Caption}
+                <div class="caption">{Caption}</div>
+                {/block:Caption}
+            </div>
+            {/block:Panorama} {block:Photoset}
+            <div class="posts">
+                {Photoset-500}{block:Caption}
+                <div class="caption">{Caption}</div>
+                {/block:Caption}
+            </div>
+            {/block:Photoset} {block:Quote}
+            <div class="posts">
+                <h1 style="text-align: center; margin: 5px 0px 5px 5px;">"{Quote}"</h1> {block:Source}
+                <div class="source"> — {Source}</div>
+                {/block:Source}
+            </div>
+            {/block:Quote} {block:Link}
+            <div class="posts">
+                <a href="{URL}" {Target}><div class="link">{Name} <i class="fa fa-caret-right" aria-hidden="true"></i></div></a> 
+                {block:Description}<div class="description">{Description}</div></div>
+                {/block:Description} {/block:Link} {block:Chat}
+                <div class="posts">
+                <div class="chat">
+                    {block:Title}
+                     <h1 style="margin-top: 0px"><a href="{Permalink}">{Title}</a></h1> {/block:Title}
+                    <ul class="chat">
+                        {block:Lines}
+                        <li class="{Alt} user_{UserNumber}" style="list-style-type: none">
+                            {block:Label}
+                            
+                            <span class="label" style="font-weight:bold;">{Label}</span> {/block:Label}{Line}
+                        </li>
+                        {/block:Lines}
+                    </ul>
+                    </div>
+                </div>
+                {/block:Chat} {block:Video}
+                <div class="posts">
+                    {Video-500}{block:Caption}
+                    <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </div>
+                {/block:Video} {block:Audio}
+                <div class="posts">
+                    {AudioEmbed}{block:Caption}
+                    <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </div>
+                {/block:Audio}
+                <div class="permalink">
+                    {block:HasTags}
+                    <div class="tagcontainer"><i class="fa fa-tags"></i>: {block:Tags}
+                        <a href="{TagURL}">{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                    <div class="permacontainer"> <a href="{Permalink}">{block:Date} {ShortMonth} {DayOfMonth} {Year} {/block:Date} {block:NoteCount}with {NoteCountWithLabel} {/block:NoteCount}</a>
+                    </div>
+                    {block:PostNotes}
+                    <div class="notes">
+                        {PostNotes}
+                    </div>
+                    {/block:PostNotes}
+                </div>
+                {/block:Posts}
+                </ol>
+                <p id="footer">
+                    {block:PreviousPage}
+                    <a href="{PreviousPage}">&#171; Previous</a> {/block:PreviousPage}{block:NextPage}
+                    <a href="{NextPage}">Next &#187;</a> {/block:NextPage} code (c) xiem, powered by tumblr | logo design (c) sonny
+            </div>
+        </div>
+        </p>
+</body>
+
+</html>
